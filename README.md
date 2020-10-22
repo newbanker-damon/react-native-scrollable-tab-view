@@ -11,7 +11,7 @@ the animations behind this work, check out the Rebound section of the
 
 ## Add it to your project
 
-1. Run `npm install react-native-scrollable-tab-view --save`
+1. Run `npm install @newbanker/react-native-scrollable-tab-view --save`
 2. `var ScrollableTabView = require('react-native-scrollable-tab-view');`
 
 ## Demo
