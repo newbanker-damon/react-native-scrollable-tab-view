@@ -154,3 +154,11 @@ export interface ScrollableTabBarProps extends DefaultTabBarProps {
 
 export class ScrollableTabBar extends React.Component<TabBarProps<ScrollableTabBarProps>> {
 }
+
+export interface SceneViewProps {
+    tabLabel?: string
+}
+
+export class SceneView extends React.Component<SceneViewProps, any> {}
+
+export class ParallaxTabView extends React.Component<any, any> {}

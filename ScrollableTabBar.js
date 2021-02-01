@@ -147,7 +147,9 @@ const ScrollableTabBar = createReactClass({
 
   measureTab(page, event) {
     const { x, width, height, } = event.nativeEvent.layout;
-    this._tabsMeasurements[page] = {left: x, right: x + width, width, height, };
+    const { width: underlineWidth } = this.props.underlineStyle || {}
+    const offset = parseInt((width - underlineWidth) / 2)
+    this._tabsMeasurements[page] = {left: x + offset, right: x + width + offset, width, height, };
     this.updateView({value: this.props.scrollValue.__getValue(), });
   },
 
@@ -167,7 +169,6 @@ const ScrollableTabBar = createReactClass({
     const {
       onScroll,
     } = this.props;
-
     return <View
       style={[styles.container, {backgroundColor: this.props.backgroundColor, }, this.props.style, ]}
       onLayout={this.onContainerLayout}
@@ -233,12 +234,12 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   container: {
-    height: 50,
-    borderWidth: 1,
+    height: 45,
+    borderWidth: StyleSheet.hairlinewidth,
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderColor: '#ccc',
+    borderColor: '#eee',
   },
   tabs: {
     flexDirection: 'row',

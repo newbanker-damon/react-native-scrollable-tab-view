@@ -65,14 +65,16 @@ const DefaultTabBar = createReactClass({
       height: 4,
       backgroundColor: 'navy',
       bottom: 0,
+      ...this.props.underlineStyle
     };
 
     const translateX = this.props.scrollValue.interpolate({
       inputRange: [0, 1],
       outputRange: [0,  containerWidth / numberOfTabs],
     });
+    
     return (
-      <View style={[styles.tabs, {backgroundColor: this.props.backgroundColor, }, this.props.style, ]}>
+      <View style={[styles.tabs, {backgroundColor: this.props.backgroundColor, }, this.props.style,]}>
         {this.props.tabs.map((name, page) => {
           const isTabActive = this.props.activeTab === page;
           const renderTab = this.props.renderTab || this.renderTab;
@@ -102,14 +104,14 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   tabs: {
-    height: 50,
+    height: 45,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlinewidth,
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderColor: '#ccc',
+    borderColor: '#eee'
   },
 });
 
