@@ -150,6 +150,8 @@ export interface ScrollableTabBarProps extends DefaultTabBarProps {
     scrollOffset?: number;
     style?: ViewStyle;
     tabsContainerStyle?: ViewStyle;
+    activeFontSize?: number;
+    inactiveFontSize?: number;
 }
 
 export class ScrollableTabBar extends React.Component<TabBarProps<ScrollableTabBarProps>> {
