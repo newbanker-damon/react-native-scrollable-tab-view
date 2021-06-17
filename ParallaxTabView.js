@@ -54,7 +54,7 @@ export default class ParallaxTabView extends React.Component {
     this.initailViewHeight =
       this.screenHeight -
       statusBarHeight -
-      navigationBarHeight -
+      (props.disableNavigationBarHeight ? 0 : navigationBarHeight) -
       scrollTabBarHeight -
       footerBarHeight;
 
@@ -163,6 +163,7 @@ export default class ParallaxTabView extends React.Component {
       tabBarStyle,
       estimateUnderLineLeft,
       contentInsetAdjustmentBehavior,
+      disableNavigationBarHeight,
     } = this.props;
     const { height, headerHeight, activeTab, scrollY, heights, offsets } =
       this.state;
@@ -177,7 +178,7 @@ export default class ParallaxTabView extends React.Component {
     let scrollViewHeight =
       this.screenHeight -
       statusBarHeight -
-      navigationBarHeight -
+      (disableNavigationBarHeight ? 0 : navigationBarHeight) -
       footerBarHeight;
     scrollViewHeight = footerHeight
       ? scrollViewHeight - footerH
