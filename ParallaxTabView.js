@@ -16,13 +16,21 @@ import {
   Text,
   Platform,
   TouchableOpacity,
+  NativeModules,
 } from "react-native";
-
 import SceneView from "./SceneView";
 import ScrollableTabView from "./ScrollableTabView";
 import ScrollableTabBar from "./ScrollableTabBar";
 
-const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
+const { width: screenWidth, height } = Dimensions.get("window");
+const { StatusBarManager } = NativeModules;
+
+const screenHeight =
+  Platform.OS === "ios"
+    ? height
+    : height / screenWidth > 1.8
+    ? height + StatusBarManager.HEIGHT * 2
+    : height;
 
 const statusBarHeight = StatusBar.currentHeight || 0;
 const navigationBarHeight = Platform.OS === "ios" ? 44 : 50;
@@ -53,7 +61,7 @@ export default class ParallaxTabView extends React.Component {
 
     this.initailViewHeight =
       this.screenHeight -
-      statusBarHeight -
+      (props.disableNavigationBarHeight ? 0 : statusBarHeight) -
       (props.disableNavigationBarHeight ? 0 : navigationBarHeight) -
       scrollTabBarHeight -
       footerBarHeight;
@@ -177,7 +185,7 @@ export default class ParallaxTabView extends React.Component {
     const footerH = footerHeight && footerHeight > 0 ? footerHeight : 0;
     let scrollViewHeight =
       this.screenHeight -
-      statusBarHeight -
+      (disableNavigationBarHeight ? 0 : statusBarHeight) -
       (disableNavigationBarHeight ? 0 : navigationBarHeight) -
       footerBarHeight;
     scrollViewHeight = footerHeight
