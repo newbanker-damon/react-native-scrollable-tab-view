@@ -317,7 +317,7 @@ export default class ParallaxTabView extends React.Component {
                 if (!!this.scrollView.current) {
                   this.scrollView.current.scrollTo({
                     x: 0,
-                    y: scrollOffset,
+                    y: scrollOffset + this.props.scrollTop?this.props.scrollTop : 0,
                     animated: false,
                   });
                 }
