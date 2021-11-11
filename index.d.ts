@@ -157,7 +157,7 @@ export interface ScrollableTabBarProps extends DefaultTabBarProps {
 export class ScrollableTabBar extends React.Component<TabBarProps<ScrollableTabBarProps>> {
 }
 
-export interface SceneViewProps {
+export interface SceneViewProps extends ViewProps {
     tabLabel?: string
 }
 
